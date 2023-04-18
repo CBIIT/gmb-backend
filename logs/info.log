@@ -1,0 +1,55 @@
+2023-04-14 11:02:44,449 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-6] hit end point:/v1/graphql/
+2023-04-14 11:11:11,131 INFO g.n.n.b.BentoApplication [main] Starting BentoApplication on NCI-02243900-ML with PID 51049 (/Users/hohua/Desktop/projects/GMB/gmb-backend/target/classes started by hohua in /Users/hohua/Desktop/projects/GMB/gmb-backend)
+2023-04-14 11:11:11,133 INFO g.n.n.b.BentoApplication [main] No active profile set, falling back to default profiles: default
+2023-04-14 11:11:11,650 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2023-04-14 11:11:11,771 WARN g.n.n.b.s.RedisService [main] Redis not connected, connection disabled in Bento configuration
+2023-04-14 11:11:11,787 INFO g.n.n.b.s.RedisService [main] Initializing Elasticsearch client
+2023-04-14 11:11:12,338 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-04-14 11:11:12,339 ERROR o.s.b.d.LoggingFailureAnalysisReporter [main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2023-04-14 12:17:50,291 INFO g.n.n.b.BentoApplication [main] Starting BentoApplication on NCI-02243900-ML with PID 15683 (/Users/hohua/Desktop/projects/GMB/gmb-backend/target/classes started by hohua in /Users/hohua/Desktop/projects/GMB/gmb-backend)
+2023-04-14 12:17:50,293 INFO g.n.n.b.BentoApplication [main] No active profile set, falling back to default profiles: default
+2023-04-14 12:17:50,781 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2023-04-14 12:17:50,900 WARN g.n.n.b.s.RedisService [main] Redis not connected, connection disabled in Bento configuration
+2023-04-14 12:17:50,917 INFO g.n.n.b.s.RedisService [main] Initializing Elasticsearch client
+2023-04-14 12:17:51,470 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-14 12:17:51,471 INFO g.n.n.b.BentoApplication [main] Started BentoApplication in 1.31 seconds (JVM running for 3.399)
+2023-04-14 12:18:01,003 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-2] hit end point:/v1/graphql/
+2023-04-14 12:22:48,790 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-4] hit end point:/v1/graphql/
+2023-04-14 12:23:03,168 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-6] hit end point:/v1/graphql/
+2023-04-14 12:23:07,485 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-7] hit end point:/v1/graphql/
+2023-04-14 12:23:14,557 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-8] hit end point:/v1/graphql/
+2023-04-14 12:23:17,742 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-9] hit end point:/v1/graphql/
+2023-04-14 12:23:20,645 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-10] hit end point:/v1/graphql/
+2023-04-14 12:23:22,920 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-1] hit end point:/v1/graphql/
+2023-04-14 12:23:25,455 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-2] hit end point:/v1/graphql/
+2023-04-14 13:20:32,192 INFO g.n.n.b.BentoApplication [main] Starting BentoApplication on NCI-02243900-ML with PID 23498 (/Users/hohua/Desktop/projects/GMB/gmb-backend/target/classes started by hohua in /Users/hohua/Desktop/projects/GMB/gmb-backend)
+2023-04-14 13:20:32,195 INFO g.n.n.b.BentoApplication [main] No active profile set, falling back to default profiles: default
+2023-04-14 13:20:32,703 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2023-04-14 13:20:32,826 WARN g.n.n.b.s.RedisService [main] Redis not connected, connection disabled in Bento configuration
+2023-04-14 13:20:32,844 INFO g.n.n.b.s.RedisService [main] Initializing Elasticsearch client
+2023-04-14 13:20:33,383 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-14 13:20:33,385 INFO g.n.n.b.BentoApplication [main] Started BentoApplication in 1.326 seconds (JVM running for 3.299)
+2023-04-14 13:21:16,292 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-1] hit end point:/v1/graphql/
+2023-04-14 13:36:17,763 INFO g.n.n.b.BentoApplication [main] Starting BentoApplication on NCI-02243900-ML with PID 25913 (/Users/hohua/Desktop/projects/GMB/gmb-backend/target/classes started by hohua in /Users/hohua/Desktop/projects/GMB/gmb-backend)
+2023-04-14 13:36:17,766 INFO g.n.n.b.BentoApplication [main] No active profile set, falling back to default profiles: default
+2023-04-14 13:36:18,238 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2023-04-14 13:36:18,355 WARN g.n.n.b.s.RedisService [main] Redis not connected, connection disabled in Bento configuration
+2023-04-14 13:36:18,370 INFO g.n.n.b.s.RedisService [main] Initializing Elasticsearch client
+2023-04-14 13:36:18,843 INFO o.s.b.w.e.t.TomcatWebServer [main] Tomcat started on port(s): 8080 (http) with context path ''
+2023-04-14 13:36:18,844 INFO g.n.n.b.BentoApplication [main] Started BentoApplication in 1.218 seconds (JVM running for 2.916)
+2023-04-14 13:36:32,401 INFO g.n.n.b.c.GraphQLController [http-nio-8080-exec-2] hit end point:/v1/graphql/
