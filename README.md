@@ -40,4 +40,3 @@ The basic access authentication value used in the ````application.properties````
 
 ````[Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("neo4j:my_password"))````
 # gmb-backend
-# gmb-backend
