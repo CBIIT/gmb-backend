@@ -1,0 +1,30 @@
+queries:
+  - name: subjectOverview
+    index:
+      - subjects
+    filter:
+      type: pagination
+      defaultSortField: subject_ids
+      alternativeSortField:
+        subject_id: subject_ids
+    result:
+      type: object_array
+
+  - name: fileOverview
+    index: 
+      - files
+    filter:
+      type: pagination
+      defaultSortField: file_id
+      alternativeSortField:
+        subject_id: file_id
+    result:
+      type: object_array
+
+  - name: studyDetail
+    index: 
+      - studies
+    filter:
+      type: default
+    result:
+      type: object_array

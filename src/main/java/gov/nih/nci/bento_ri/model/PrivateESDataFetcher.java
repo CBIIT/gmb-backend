@@ -80,6 +80,7 @@ public class PrivateESDataFetcher extends AbstractPrivateESDataFetcher {
     public RuntimeWiring buildRuntimeWiring() throws IOException {
         return RuntimeWiring.newRuntimeWiring()
                 .type(newTypeWiring("QueryType")
+                        .dataFetchers(yamlQueryFactory.createYamlQueries(Const.ES_ACCESS_TYPE.PRIVATE))/* 
                         .dataFetcher("searchSubjects", env -> {
                                 Map<String, Object> args = env.getArguments();
                                 return searchSubjects(args);
@@ -88,14 +89,14 @@ public class PrivateESDataFetcher extends AbstractPrivateESDataFetcher {
                                 Map<String, Object> args = env.getArguments();
                                 return subjectOverview(args);
                         })
-                        .dataFetcher("sampleOverview", env -> {
-                                Map<String, Object> args = env.getArguments();
-                                return sampleOverview(args);
-                        })
                         .dataFetcher("fileOverview", env -> {
                                 Map<String, Object> args = env.getArguments();
                                 return fileOverview(args);
-                        })
+                        })*/
+                        .dataFetcher("sampleOverview", env -> {
+                            Map<String, Object> args = env.getArguments();
+                            return sampleOverview(args);
+                    })
                         .dataFetcher("globalSearch", env -> {
                                 Map<String, Object> args = env.getArguments();
                                 return globalSearch(args);
@@ -115,7 +116,7 @@ public class PrivateESDataFetcher extends AbstractPrivateESDataFetcher {
                 )
                 .build();
     }
-
+/* 
     private Map<String, Object> searchSubjects(Map<String, Object> params) throws IOException {
         final String AGG_NAME = "agg_name";
         final String AGG_ENDPOINT = "agg_endpoint";
@@ -301,7 +302,7 @@ public class PrivateESDataFetcher extends AbstractPrivateESDataFetcher {
 
         return data;
     }
-    
+    */
     private List<Map<String, Object>> subjectOverview(Map<String, Object> params) throws IOException {
         final String[][] PROPERTIES = new String[][]{
                 new String[]{"subject_id", "subject_ids"},

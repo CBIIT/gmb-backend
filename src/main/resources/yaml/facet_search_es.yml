@@ -1,0 +1,307 @@
+queries:
+  - name: searchSubjects
+    returnFields:
+      - name: numberOfTrials
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: clinical_trial_id
+        result:
+          type: int
+          method: count_bucket_keys
+      - name: numberOfSubjects
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: subject_ids
+        result:
+          type: int
+          method: count_bucket_keys
+      - name: numberOfFiles
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: files
+        result:
+          type: int
+          method: count_bucket_keys
+
+      - name: subjectCountByRace
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: race
+        result:
+          type: group_count
+      - name: subjectCountByDiseaseTerm
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: disease_term
+        result:
+          type: group_count
+      - name: subjectCountByRegisteringInstitution
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: registering_institution
+        result:
+          type: group_count
+      - name: subjectCountByPatientSubgroup
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: patient_subgroup
+        result:
+          type: group_count
+      - name: subjectCountByStageAtEntry
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: stage_at_entry
+        result:
+          type: group_count
+      - name: subjectCountByCauseOfDeath
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: cause_of_death
+        result:
+          type: group_count
+      - name: subjectCountBySitesOfDiseaseAtAutopsy
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: sites_of_disease_at_autopsy
+        result:
+          type: group_count
+      - name: subjectCountBySourceOfTheLabData
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: source_of_the_lab_data
+        result:
+          type: group_count
+      - name: subjectCountByLabTest
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: lab_test
+        result:
+          type: group_count
+      - name: subjectCountBySystemOrganClass
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: system_organ_class
+        result:
+          type: group_count
+      - name: subjectCountBySerious
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: serious
+        result:
+          type: group_count
+      - name: subjectCountByOutcome
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: outcome
+        result:
+          type: group_count
+      - name: subjectCountBySomaticPathogenicity
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: somatic_pathogenicity
+        result:
+          type: group_count
+      - name: subjectCountByGermlinePathogenicity
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: germline_pathogenicity
+        result:
+          type: group_count
+      - name: subjectCountByFileType
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: file_type
+        result:
+          type: group_count
+      - name: subjectCountByClinicalTrialId
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: clinical_trial_id
+        result:
+          type: group_count
+
+      - name: filterSubjectCountByRace
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: race
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByDiseaseTerm
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: disease_term
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByRegisteringInstitution
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: registering_institution
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByPatientSubgroup
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: patient_subgroup
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByStageAtEntry
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: stage_at_entry
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByCauseOfDeath
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: cause_of_death
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountBySitesOfDiseaseAtAutopsy
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: sites_of_disease_at_autopsy
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountBySourceOfTheLabData
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: source_of_the_lab_data
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByLabTest
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: lab_test
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountBySystemOrganClass
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: system_organ_class
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountBySerious
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: serious
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByOutcome
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: outcome
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountBySomaticPathogenicity
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: somatic_pathogenicity
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByGermlinePathogenicity
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: germline_pathogenicity
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByFileType
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: file_type
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: filterSubjectCountByClinicalTrialId
+        index:
+          - subjects
+        filter:
+          type: aggregation
+          selectedField: clinical_trial_id
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      
+
+
