@@ -1,23 +1,75 @@
 queries:
   - name: globalSearch
     returnFields:
+
+      - name: trials
+        index:
+          - trials
+        filter:
+          type: global
+          defaultSortField: trial_name
+          searches:
+            - field: trial_name_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: trial_long_name_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: trial_id_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: trial_description_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: trial_type_gs
+              type: wildcard
+              caseInsensitive: true
+        result:
+          type: global
+      - name: trial_count
+        index:
+          - trials
+        filter:
+          type: global
+          defaultSortField: trial_name
+          searches:
+            - field: trial_name_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: trial_long_name_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: trial_id_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: trial_description_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: trial_type_gs
+              type: wildcard
+              caseInsensitive: true
+        result:
+          type: int_total_count
+
       - name: subjects
         index:
           - subjects
         filter:
           type: global
-          defaultSortField: subject_id_num
+          defaultSortField: subject_ids
           searches:
-            - field: subject_id
+            - field: subject_id_gs
               type: wildcard
               caseInsensitive: true
-            - field: diagnosis_gs
+            - field: registering_institution_gs
               type: wildcard
               caseInsensitive: true
-          typedSearch:
-            - field: age_at_index
-              type: term
-              option: integer
+            - field: disease_term_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: clinical_trial_id_gs
+              type: wildcard
+              caseInsensitive: true
         result:
           type: global
       - name: subject_count
@@ -25,111 +77,20 @@ queries:
           - subjects
         filter:
           type: global
-          defaultSortField: subject_id_num
+          defaultSortField: subject_ids
           searches:
-            - field: subject_id
+            - field: subject_id_gs
               type: wildcard
               caseInsensitive: true
-            - field: diagnosis_gs
+            - field: registering_institution_gs
               type: wildcard
               caseInsensitive: true
-          typedSearch:
-            - field: age_at_index
-              type: term
-              option: integer
-        result:
-          type: int_total_count
-
-      - name: samples
-        index:
-          - samples
-        filter:
-          type: global
-          defaultSortField: subject_id_num
-          searches:
-            - field: sample_id_gs
+            - field: disease_term_gs
               type: wildcard
-            - field: sample_anatomic_site_gs
+              caseInsensitive: true
+            - field: clinical_trial_id_gs
               type: wildcard
-            - field: tissue_type_gs
-              type: wildcard
-        result:
-          type: global
-      - name: sample_count
-        index:
-          - samples
-        filter:
-          type: global
-          defaultSortField: subject_id_num
-          searches:
-            - field: sample_id_gs
-              type: wildcard
-            - field: sample_anatomic_site_gs
-              type: wildcard
-            - field: tissue_type_gs
-              type: wildcard
-        result:
-          type: int_total_count
-
-      - name: programs
-        index:
-          - programs
-        filter:
-          type: global
-          defaultSortField: program_id_kw
-          searches:
-            - field: program_id
-              type: wildcard
-            - field: program_code
-              type: wildcard
-            - field: program_name
-              type: wildcard
-        result:
-          type: global
-      - name: program_count
-        index:
-          - programs
-        filter:
-          type: global
-          defaultSortField: program_id_kw
-          searches:
-            - field: program_id
-              type: wildcard
-            - field: program_code
-              type: wildcard
-            - field: program_name
-              type: wildcard
-        result:
-          type: int_total_count
-
-      - name: studies
-        index:
-          - studies
-        filter:
-          type: global
-          defaultSortField: study_id_kw
-          searches:
-            - field: study_id
-              type: wildcard
-            - field: study_name
-              type: wildcard
-            - field: study_type
-              type: wildcard
-        result:
-          type: global
-      - name: study_count
-        index:
-          - studies
-        filter:
-          type: global
-          defaultSortField: study_id_kw
-          searches:
-            - field: study_id
-              type: wildcard
-            - field: study_name
-              type: wildcard
-            - field: study_type
-              type: wildcard
+              caseInsensitive: true
         result:
           type: int_total_count
 
@@ -138,15 +99,26 @@ queries:
           - files
         filter:
           type: global
-          defaultSortField: file_id_num
+          defaultSortField: file_id
           searches:
             - field: file_id_gs
               type: wildcard
-            - field: file_name
+              caseInsensitive: true
+            - field: file_name_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: file_description_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: clinical_trial_id_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: subject_id_gs
               type: wildcard
               caseInsensitive: true
             - field: file_format_gs
               type: wildcard
+              caseInsensitive: true
         result:
           type: global
       - name: file_count
@@ -154,15 +126,75 @@ queries:
           - files
         filter:
           type: global
-          defaultSortField: file_id_num
+          defaultSortField: file_id
           searches:
             - field: file_id_gs
               type: wildcard
-            - field: file_name
+              caseInsensitive: true
+            - field: file_name_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: file_description_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: clinical_trial_id_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: subject_id_gs
               type: wildcard
               caseInsensitive: true
             - field: file_format_gs
               type: wildcard
+              caseInsensitive: true
+        result:
+          type: int_total_count
+
+      - name: sites
+        index:
+          - sites
+        filter:
+          type: global
+          defaultSortField: site_id
+          searches:
+            - field: site_id_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: site_name_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: site_address_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: site_status_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: clinical_trial_id_gs
+              type: wildcard
+              caseInsensitive: true
+        result:
+          type: global
+      - name: site_count
+        index:
+          - sites
+        filter:
+          type: global
+          defaultSortField: site_id
+          searches:
+            - field: site_id_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: site_name_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: site_address_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: site_status_gs
+              type: wildcard
+              caseInsensitive: true
+            - field: clinical_trial_id_gs
+              type: wildcard
+              caseInsensitive: true
         result:
           type: int_total_count
 

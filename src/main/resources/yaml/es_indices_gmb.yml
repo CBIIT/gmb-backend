@@ -263,7 +263,7 @@ Indices:
       site_name_gs:
         type: search_as_you_type
       site_address_gs:
-          type: search_as_you_type
+        type: search_as_you_type
       site_status_gs:
         type: search_as_you_type
       clinical_trial_id_gs:
