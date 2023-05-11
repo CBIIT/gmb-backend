@@ -28,3 +28,47 @@ queries:
       type: default
     result:
       type: object_array
+
+  - name: fileIDsFromList
+    index:
+      - files
+    filter:
+      type: default
+      caseInsensitive: true
+      selectedField: file_id
+      ignoreIfEmpty:
+        - subject_ids
+        - file_names
+    result:
+      type: str_array
+
+  - name: fileIdsFromFileName
+    index:
+      - files
+    filter:
+      type: default
+      caseInsensitive: true
+    result:
+      type: object_array
+
+  - name: filesInList
+    index:
+      - files
+    filter:
+      type: pagination
+      defaultSortField: file_name
+      ignoreIfEmpty:
+        - file_id
+    result:
+      type: object_array
+      
+  - name: findSubjectIdsInList
+    index:
+      - subjects
+    filter:
+      type: default
+      caseInsensitive: true
+      ignoreIfEmpty:
+        - subject_ids
+    result:
+      type: object_array

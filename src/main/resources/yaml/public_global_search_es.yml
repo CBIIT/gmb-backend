@@ -1,7 +1,6 @@
 queries:
-  - name: globalSearch
+  - name: publicGlobalSearch
     returnFields:
-
       - name: trials
         index:
           - trials
@@ -26,6 +25,7 @@ queries:
               caseInsensitive: true
         result:
           type: global
+
       - name: trial_count
         index:
           - trials
@@ -51,27 +51,6 @@ queries:
         result:
           type: int_total_count
 
-      - name: subjects
-        index:
-          - subjects
-        filter:
-          type: global
-          defaultSortField: subject_ids
-          searches:
-            - field: subject_id_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: registering_institution_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: disease_term_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: clinical_trial_id_gs
-              type: wildcard
-              caseInsensitive: true
-        result:
-          type: global
       - name: subject_count
         index:
           - subjects
@@ -94,33 +73,6 @@ queries:
         result:
           type: int_total_count
 
-      - name: files
-        index:
-          - files
-        filter:
-          type: global
-          defaultSortField: file_id
-          searches:
-            - field: file_id_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: file_name_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: file_description_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: clinical_trial_id_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: subject_id_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: file_format_gs
-              type: wildcard
-              caseInsensitive: true
-        result:
-          type: global
       - name: file_count
         index:
           - files
@@ -149,30 +101,6 @@ queries:
         result:
           type: int_total_count
 
-      - name: sites
-        index:
-          - sites
-        filter:
-          type: global
-          defaultSortField: site_id
-          searches:
-            - field: site_id_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: site_name_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: site_address_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: site_status_gs
-              type: wildcard
-              caseInsensitive: true
-            - field: clinical_trial_id_gs
-              type: wildcard
-              caseInsensitive: true
-        result:
-          type: global
       - name: site_count
         index:
           - sites

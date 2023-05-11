@@ -3,6 +3,8 @@ Indices:
   - index_name: subjects
     type: neo4j
     mapping:
+      subject_id:
+        type: keyword
       subject_ids:
         type: keyword
       race: 
@@ -59,6 +61,7 @@ Indices:
       WITH
         coalesce(ct.CLINICAL_TRIAL_ID, 'N/A') AS clinical_trial_id,
         coalesce(ct.CLINICAL_TRIAL_ID, 'N/A') AS clinical_trial_id_gs,
+        coalesce(s.PT_ID, 'N/A') AS subject_id,
         coalesce(s.PT_ID, 'N/A') AS subject_ids,
         coalesce(s.PT_ID, 'N/A') AS subject_id_gs,
         coalesce(s.PT_RACE_CD_1, 'N/A') AS race,
@@ -82,6 +85,7 @@ Indices:
       RETURN
         clinical_trial_id,
         clinical_trial_id_gs,
+        subject_id,
         subject_ids,
         subject_id_gs,
         race,
@@ -218,39 +222,41 @@ Indices:
   - index_name: trials
     type: neo4j
     mapping:
-      trial_name:
+      clinical_trial_short_name:
         type: keyword
-      trial_name_gs:
+      clinical_trial_short_name_gs:
         type: search_as_you_type
-      trial_long_name:
+      clinical_trial_long_name:
         type: keyword
-      trial_long_name_gs:
+      clinical_trial_long_name_gs:
         type: search_as_you_type
-      trial_id:
+      clinical_trial_id:
         type: keyword
-      trial_id_gs:
+      clinical_trial_id_gs:
         type: search_as_you_type
-      trial_description:
+      clinical_trial_description:
         type: keyword
-      trial_description_gs:
+      clinical_trial_description_gs:
         type: search_as_you_type
-      trial_type:
+      clinical_trial_type:
         type: keyword
-      trial_type_gs:
+      clinical_trial_type_gs:
         type: search_as_you_type
     cypher_query: "
       MATCH(ct:CLINICALTRIAL)
+      OPTIONAL MATCH (ct)<--(s:SUBJECT)
       RETURN DISTINCT
-        ct.CLINICAL_TRIAL_SHORT_NAME AS trial_name,
-        ct.CLINICAL_TRIAL_SHORT_NAME AS trial_name_gs,
-        ct.CLINICAL_TRIAL_LONG_NAME AS trial_long_name,
-        ct.CLINICAL_TRIAL_LONG_NAME AS trial_long_name_gs,
-        ct.CLINICAL_TRIAL_ID AS trial_id,
-        ct.CLINICAL_TRIAL_ID AS trial_id_gs,
-        ct.CLINICAL_TRIAL_DESCRIPTION AS trial_description,
-        ct.CLINICAL_TRIAL_DESCRIPTION AS trial_description_gs,
-        ct.CLINICAL_TRIAL_TYPE AS trial_type,
-        ct.CLINICAL_TRIAL_TYPE AS trial_type_gs
+        ct.CLINICAL_TRIAL_SHORT_NAME AS clinical_trial_short_name,
+        ct.CLINICAL_TRIAL_SHORT_NAME AS clinical_trial_short_name_gs,
+        ct.CLINICAL_TRIAL_LONG_NAME AS clinical_trial_long_name,
+        ct.CLINICAL_TRIAL_LONG_NAME AS clinical_trial_long_name_gs,
+        ct.CLINICAL_TRIAL_ID AS clinical_trial_id,
+        ct.CLINICAL_TRIAL_ID AS clinical_trial_id_gs,
+        ct.CLINICAL_TRIAL_DESCRIPTION AS clinical_trial_description,
+        ct.CLINICAL_TRIAL_DESCRIPTION AS clinical_trial_description_gs,
+        ct.CLINICAL_TRIAL_TYPE AS clinical_trial_type,
+        ct.CLINICAL_TRIAL_TYPE AS clinical_trial_type_gs,
+        COUNT(s.PT_ID) AS num_subjects
     "
   # Sites Index
   - index_name: sites
@@ -260,12 +266,20 @@ Indices:
         type: keyword
       site_id_gs:
         type: search_as_you_type
+      site_name:
+        type: keyword
       site_name_gs:
         type: search_as_you_type
+      site_address:
+        type: keyword
       site_address_gs:
         type: search_as_you_type
+      site_status:
+        type: keyword
       site_status_gs:
         type: search_as_you_type
+      clinical_trial_id:
+        type: keyword
       clinical_trial_id_gs:
         type: search_as_you_type
     cypher_query: "
@@ -274,9 +288,13 @@ Indices:
       RETURN DISTINCT
         site.uuid AS site_id,
         site.uuid AS site_id_gs,
+        site.REG_INST_ID AS site_name,
         site.REG_INST_ID AS site_name_gs,
+        site.EMAIL AS site_address,
         site.EMAIL AS site_address_gs,
+        site.STATUS AS site_status,
         site.STATUS AS site_status_gs,
+        ct.CLINICAL_TRIAL_ID AS clinical_trial_id,
         ct.CLINICAL_TRIAL_ID AS clinical_trial_id_gs
     "
   # About Page Index
