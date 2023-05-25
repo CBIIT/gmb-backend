@@ -30,14 +30,9 @@ public class PublicESDataFetcher extends AbstractPublicESDataFetcher {
                 .type(newTypeWiring("QueryType")
                         .dataFetchers(yamlQueryFactory.createYamlQueries(Const.ES_ACCESS_TYPE.PUBLIC))
                         .dataFetcher("esVersion", env -> esVersion())
-                        /*
-                        .dataFetcher("numberOfPrograms", env -> getNodeCount(PROGRAMS_COUNT_END_POINT))
-                        .dataFetcher("numberOfStudies", env -> getNodeCount(STUDIES_COUNT_END_POINT))
+                        .dataFetcher("numberOfTrials", env -> getNodeCount(TRIALS_COUNT_END_POINT))
                         .dataFetcher("numberOfSubjects", env -> getNodeCount(SUBJECTS_COUNT_END_POINT))
-                        .dataFetcher("numberOfSamples", env -> getNodeCount(SAMPLES_COUNT_END_POINT))
-                        .dataFetcher("numberOfLabProcedures", env -> getNodeCount(LAB_PROCEDURE_COUNT_END_POINT))
                         .dataFetcher("numberOfFiles", env -> getNodeCount(FILES_COUNT_END_POINT))
-                        */
                 )
                 .build();
     }

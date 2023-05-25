@@ -39,6 +39,10 @@ public class PrivateESDataFetcher extends AbstractPrivateESDataFetcher {
                 .type(newTypeWiring("QueryType")
                         .dataFetchers(yamlQueryFactory.createYamlQueries(Const.ES_ACCESS_TYPE.PRIVATE))
                         .dataFetcher("idsLists", env -> idsLists())
+                        .dataFetchers(yamlQueryFactory.createYamlQueries(Const.ES_ACCESS_TYPE.PUBLIC))
+                        .dataFetcher("numberOfTrials", env -> getNodeCount(TRIALS_COUNT_END_POINT))
+                        .dataFetcher("numberOfSubjects", env -> getNodeCount(SUBJECTS_COUNT_END_POINT))
+                        .dataFetcher("numberOfFiles", env -> getNodeCount(FILES_COUNT_END_POINT))
                 )
                 .build();
     }

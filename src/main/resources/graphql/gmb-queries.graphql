@@ -1,0 +1,20 @@
+type NodeCounts {
+    numberOfTrials: Int
+    numberOfSubjects: Int
+    numberOfFiles: Int
+}
+
+schema {
+    query: QueryType
+}
+
+type QueryType {
+    nodeCountsFromLists (subject_ids: [String] = [], sample_ids: [String] = [], file_ids: [String] = [], file_names: [String] = []): NodeCounts @cypher(statement: """
+        OPTIONAL MATCH (f:FILE)-->(s:SUBJECT)-->(ct:CLINICALTRIAL)
+        RETURN  {
+            numberOfTrials: COUNT(DISTINCT ct),
+            numberOfSubjects: COUNT(DISTINCT s),
+            numberOfFiles: COUNT(DISTINCT f)
+        }
+    """, passThrough:true)
+}

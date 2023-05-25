@@ -153,6 +153,9 @@ schema {
 }
 
 type QueryType {
+    numberOfTrials: Int
+    numberOfSubjects: Int
+    numberOfFiles: Int
 
     searchSubjects(
         subject_ids: [String] = [],

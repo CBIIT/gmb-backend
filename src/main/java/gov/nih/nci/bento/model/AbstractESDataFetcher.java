@@ -19,8 +19,8 @@ import java.util.Set;
 
 public abstract class AbstractESDataFetcher {
     // parameters used in queries
-    protected final String PROGRAMS_END_POINT = "/programs/_search";
-    protected final String PROGRAMS_COUNT_END_POINT = "/programs/_count";
+    protected final String TRIALS_END_POINT = "/trials/_search";
+    protected final String TRIALS_COUNT_END_POINT = "/trials/_count";
     protected final String STUDIES_END_POINT = "/studies/_search";
     protected final String STUDIES_COUNT_END_POINT = "/studies/_count";
     protected final String SUBJECTS_END_POINT = "/subjects/_search";
