@@ -3,5 +3,21 @@ schema {
 }
 
 type QueryType {
-
+    numberOfTrials: Int @cypher(statement: """
+        MATCH (ct:CLINICALTRIAL)
+        RETURN 
+        COUNT(DISTINCT ct)
+    """, passThrough: true)
+    
+    numberOfSubjects: Int @cypher(statement: """
+        MATCH (c:SUBJECT)
+        RETURN
+        COUNT(DISTINCT c)
+    """, passThrough: true)
+    
+    numberOfFiles: Int @cypher(statement: """
+        MATCH (f:FILE)
+        RETURN 
+        COUNT(DISTINCT f)
+    """, passThrough: true)
 }
