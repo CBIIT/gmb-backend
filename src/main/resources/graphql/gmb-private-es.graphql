@@ -51,12 +51,12 @@ type SubjectOverviewES {
     subject_id: String
     race: String
     disease_term: String
-    stageAtEntry: String
-    causeOfDeath: String
-    sitesOfDiseaseAtAutopsy: String
-    sourceOfTheLabData: String
-    labTest: String
-    systemOrganClass: String
+    stage_at_entry: String
+    cause_of_death: String
+    sites_of_disease_at_autopsy: String
+    source_of_the_lab_data: String
+    lab_test: String
+    system_organ_class: String
     serious: String
     outcome: String
     files: [String]
@@ -66,9 +66,9 @@ type FileOverviewES {
     file_name: String
     subject_id: String
     description: String
-    fileFormat: String
+    file_format: String
     size: String
-    fileType: String
+    file_type: String
     file_id: String
     md5sum: String
 }
@@ -202,7 +202,7 @@ type QueryType {
     ): [SubjectOverviewES]
 
     fileOverview(
-        file_id: [String] = [],
+        file_ids: [String] = [],
         file_name: [String] = [],
         subject_ids: [String] = [],
         race: [String] = [],
@@ -245,7 +245,7 @@ type QueryType {
     ): [String]
 
     filesInList(
-        file_id: [String] = [],
+        file_ids: [String] = [],
         order_by: String = "",
         sort_direction: String = "ASC",
         first: Int = 10,
