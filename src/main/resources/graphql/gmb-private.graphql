@@ -121,7 +121,7 @@ type SiteSubjectCount{
     site_name: String
     site_address: String
     site_status: String
-    subject_count: Int
+    num_subjects: Int
 }
 
 type TrialDetail{
@@ -264,7 +264,7 @@ type QueryType {
                 site_name: site.REG_INST_ID_CD,
                 site_address: site.LOCATION,
                 site_status: site.STATUS,
-                subject_count: num_site_subjects
+                num_subjects: num_site_subjects
             }) AS sites
         RETURN {
             trial_id: ct.CLINICAL_TRIAL_ID,
