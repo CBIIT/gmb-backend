@@ -3,6 +3,8 @@ Indices:
   - index_name: subjects
     type: neo4j
     mapping:
+      type:
+        type: keyword
       subject_id:
         type: keyword
       subject_ids:
@@ -83,6 +85,7 @@ Indices:
         COLLECT(DISTINCT f.FILE_TYPE) AS file_type,
         COLLECT(DISTINCT f.UUID) AS files
       RETURN
+        'subject' AS type,
         clinical_trial_id,
         clinical_trial_id_gs,
         subject_id,
@@ -111,6 +114,8 @@ Indices:
   - index_name: files
     type: neo4j
     mapping:
+      type:
+        type: keyword
       file_id:
         type: keyword
       file_name:
@@ -185,6 +190,7 @@ Indices:
       OPTIONAL MATCH (s)<--(sv:SOMATIC_VARIANT)
       OPTIONAL MATCH (s)<--(gv:GERMLINE_VARIANT)
       RETURN DISTINCT
+        'file' AS type,
         f.UUID AS file_id,
         f.UUID AS file_id_gs,
         f.FILE_NAME AS file_name,
@@ -222,6 +228,8 @@ Indices:
   - index_name: trials
     type: neo4j
     mapping:
+      type:
+        type: keyword
       clinical_trial_short_name:
         type: keyword
       clinical_trial_short_name_gs:
@@ -246,6 +254,7 @@ Indices:
       MATCH(ct:CLINICALTRIAL)
       OPTIONAL MATCH (ct)<--(s:SUBJECT)
       RETURN DISTINCT
+        'trial' AS type,
         ct.CLINICAL_TRIAL_SHORT_NAME AS clinical_trial_short_name,
         ct.CLINICAL_TRIAL_SHORT_NAME AS clinical_trial_short_name_gs,
         ct.CLINICAL_TRIAL_LONG_NAME AS clinical_trial_long_name,
@@ -262,6 +271,8 @@ Indices:
   - index_name: sites
     type: neo4j
     mapping:
+      type:
+        type: keyword
       site_id:
         type: keyword
       site_id_gs:
@@ -286,6 +297,7 @@ Indices:
       MATCH (site:SITE)
       OPTIONAL MATCH (site)-->(ct:CLINICALTRIAL)
       RETURN DISTINCT
+        'site' AS type,
         site.uuid AS site_id,
         site.uuid AS site_id_gs,
         site.REG_INST_ID AS site_name,

@@ -1,9 +1,29 @@
+type PublicGlobalSearchResult {
+    subject_count: Int
+    file_count: Int
+    trial_count: Int
+    site_count: Int
+    model_count: Int
+    about_count: Int
+    about_page: [GS_About]
+}
+
+type GS_About {
+    page: String
+    title: String
+    type: String
+    text: [String]
+}
+
 schema {
     query: QueryType
 }
 
 type QueryType {
+    esVersion: String
     numberOfTrials: Int
     numberOfSubjects: Int
     numberOfFiles: Int
+
+    publicGlobalSearch (input: String, first: Int = 10, offset: Int = 0): PublicGlobalSearchResult
 }

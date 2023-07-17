@@ -74,34 +74,27 @@ type FileOverviewES {
 }
 
 type GlobalSearchResult {
-    trial_count: Int
-    trials: [GS_Trial]
-
     subject_count: Int
     subjects: [GS_Subject]
 
     file_count: Int
     files: [GS_File]
 
+    trial_count: Int
+    trials: [GS_Trial]
+
     site_count: Int
     sites: [GS_Site]
 
-    about_count: Int
-    about_page: [GS_About]
-
     model_count: Int
     model: [GS_Model]
-}
 
-type GS_Trial {
-    clinical_trial_id: String
-    clinical_trial_short_name: String
-    clinical_trial_long_name: String
-    clinical_trial_description: String
-    clinical_trial_type: String
+    about_count: Int
+    about_page: [GS_About]
 }
 
 type GS_Subject {
+    type: String
     subject_id: String
     registering_institution: String
     disease_term: String
@@ -109,6 +102,7 @@ type GS_Subject {
 }
 
 type GS_File {
+    type: String
     file_id: String
     file_name: String
     file_description: String
@@ -117,7 +111,17 @@ type GS_File {
     file_format: String
 }
 
+type GS_Trial {
+    type: String
+    clinical_trial_id: String
+    clinical_trial_short_name: String
+    clinical_trial_long_name: String
+    clinical_trial_description: String
+    clinical_trial_type: String
+}
+
 type GS_Site {
+    type: String
     site_id: String
     site_name: String
     site_address: String
@@ -137,10 +141,10 @@ type GS_Model {
 }
 
 type GS_About {
+    type: String
     page: String
     title: String
-    type: String
-    text: String
+    text: [String]
 }
 
 type SubjectTrial{
@@ -153,6 +157,7 @@ schema {
 }
 
 type QueryType {
+    esVersion: String
     numberOfTrials: Int
     numberOfSubjects: Int
     numberOfFiles: Int
