@@ -149,7 +149,7 @@ type GS_About {
 
 type SubjectTrial{
     subject_id: String
-    trial_id: String
+    clinical_trial_id: String
 }
 
 schema {
@@ -261,10 +261,6 @@ type QueryType {
 
     findSubjectIdsInList(
         subject_ids: [String] = [],
-        order_by: String = "",
-        sort_direction: String = "ASC",
-        first: Int = 10,
-        offset: Int = 0
     ): [SubjectTrial]
     
 }

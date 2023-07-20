@@ -103,7 +103,7 @@ type SomaticVariant {
 }
 
 type GermlineVariant {
-    panelCode: String
+    panel_code: String
     gene_pathogenic_variant: String
     germline_pathogenicity: String
 }
@@ -213,7 +213,7 @@ type QueryType {
                 somatic_pathogenicity: sv.SOMATIC_VAR_PTHGNC_CAT
             }) AS somatic_variant,
             COLLECT(DISTINCT gv {
-                panelCode: gv.HERED_GENE_PANL_CD,
+                panel_code: gv.HERED_GENE_PANL_CD,
                 gene_pathogenic_variant: gv.GENE_PATH_VAR_NM,
                 germline_pathogenicity: gv.GRMLN_VAR_PTHGNC_CAT
             }) AS germline_variant
