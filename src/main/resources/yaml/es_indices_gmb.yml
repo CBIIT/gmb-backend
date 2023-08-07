@@ -118,6 +118,8 @@ Indices:
         type: keyword
       file_id:
         type: keyword
+      file_ids:
+        type: keyword
       file_name:
         type: keyword
       file_names:
@@ -134,6 +136,8 @@ Indices:
         type: keyword
       arm:
         type: keyword
+      subject_id:
+        type: keyword
       subject_ids:
         type: keyword
       race:
@@ -143,26 +147,6 @@ Indices:
       registering_institution:
         type: keyword
       patient_subgroup:
-        type: keyword
-      stage_at_entry:
-        type: keyword
-      cause_of_death:
-        type: keyword
-      sites_of_disease_at_autopsy:
-        type: keyword
-      source_of_the_lab_data:
-        type: keyword
-      lab_test:
-        type: keyword
-      system_organ_class:
-        type: keyword
-      serious:
-        type: keyword
-      outcome:
-        type: keyword
-      somatic_pathogenicity:
-        type: keyword
-      germline_pathogenicity:
         type: keyword
       file_type:
         type: keyword
@@ -183,15 +167,10 @@ Indices:
     cypher_query: "
       MATCH (f:FILE)
       OPTIONAL MATCH (f)-->(s:SUBJECT)-->(ct:CLINICALTRIAL)
-      OPTIONAL MATCH (e:ENROLLMENT)-->(s)
-      OPTIONAL MATCH (srv:SURVIVAL)-->(s)
-      OPTIONAL MATCH (l:LABORATORY)-->(s)
-      OPTIONAL MATCH (ae:ADVERSE_EVENTS)-->(s)
-      OPTIONAL MATCH (s)<--(sv:SOMATIC_VARIANT)
-      OPTIONAL MATCH (s)<--(gv:GERMLINE_VARIANT)
       RETURN DISTINCT
         'file' AS type,
         f.UUID AS file_id,
+        f.UUID AS file_ids,
         f.UUID AS file_id_gs,
         f.FILE_NAME AS file_name,
         f.FILE_NAME AS file_names,
@@ -205,22 +184,13 @@ Indices:
         ct.CLINICAL_TRIAL_ID AS clinical_trial_id_gs,
         ct.CLINICAL_TRIAL_SHORT_NAME AS trial_short_name,
         s.ARM AS arm,
+        s.PT_ID AS subject_id,
         s.PT_ID AS subject_ids,
         s.PT_ID AS subject_id_gs,
         s.PT_RACE_CD_1 AS race,
         s.DZ_DX_NM AS disease_term,
         s.REG_INST_ID_CD AS registering_institution,
         s.PT_SUBGRP_ASSIGN_TP AS patient_subgroup,
-        e.DISEAS_STG AS stage_at_entry,
-        srv.DEATH_CAUS_CD AS cause_of_death,
-        srv.ATPSY_DZ_SITE_NM AS sites_of_disease_at_autopsy,
-        l.LAB_DATA_SRCE_NM AS source_of_the_lab_data,
-        l.LAB_TEST_NM AS lab_test,
-        ae.MEDDRA_SOC_TRM_NM AS system_organ_class,
-        ae.SAE_RSN AS serious,
-        ae.AE_OUTCOME AS outcome,
-        gv.GRMLN_VAR_PTHGNC_CAT AS germline_pathogenicity,
-        sv.SOMATIC_VAR_PTHGNC_CAT AS somatic_pathogenicity,
         f.FILE_TYPE AS file_type,
         f.MD5SUM AS md5sum
     "

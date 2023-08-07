@@ -65,9 +65,9 @@ type SubjectOverviewES {
 type FileOverviewES {
     file_name: String
     subject_id: String
-    description: String
+    file_description: String
     file_format: String
-    size: String
+    file_size: String
     file_type: String
     file_id: String
     md5sum: String

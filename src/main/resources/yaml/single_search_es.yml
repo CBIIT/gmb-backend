@@ -58,7 +58,7 @@ queries:
       type: pagination
       defaultSortField: file_name
       ignoreIfEmpty:
-        - file_id
+        - file_ids
     result:
       type: object_array
       

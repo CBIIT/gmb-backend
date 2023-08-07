@@ -21,10 +21,10 @@ queries:
           method: count_bucket_keys
       - name: numberOfFiles
         index:
-          - subjects
+          - files
         filter:
           type: aggregation
-          selectedField: files
+          selectedField: file_id
         result:
           type: int
           method: count_bucket_keys
