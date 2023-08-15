@@ -39,5 +39,3 @@ The basic access authentication value used in the ````application.properties````
 ### Generate base64 encoding in powershell
 
 ````[Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("neo4j:my_password"))````
-# gmb-backend
-# gmb-backend
