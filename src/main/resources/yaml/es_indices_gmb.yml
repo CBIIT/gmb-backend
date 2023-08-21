@@ -164,6 +164,8 @@ Indices:
         type: search_as_you_type
       file_format_gs:
         type: search_as_you_type
+      acl:
+        type: keyword
     cypher_query: "
       MATCH (f:FILE)
       OPTIONAL MATCH (f)-->(s:SUBJECT)-->(ct:CLINICALTRIAL)
@@ -180,6 +182,7 @@ Indices:
         f.FILE_FORMAT AS file_format,
         f.FILE_FORMAT AS file_format_gs,
         f.FILE_SIZE AS file_size,
+        apoc.convert.fromJsonList(f.ACL) AS acl,
         ct.CLINICAL_TRIAL_ID AS clinical_trial_id,
         ct.CLINICAL_TRIAL_ID AS clinical_trial_id_gs,
         ct.CLINICAL_TRIAL_SHORT_NAME AS trial_short_name,
