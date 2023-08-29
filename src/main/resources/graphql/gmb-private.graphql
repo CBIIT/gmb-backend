@@ -176,7 +176,7 @@ type QueryType {
                 file_size: f.FILE_SIZE,
                 file_id: f.UUID,
                 md5sum: f.MD5SUM,
-                acl: f.ACL,
+                acl: f.ACL
             }) AS files,
             COLLECT(DISTINCT e {
                 date_of_diagnosis: e.DX_DT,
